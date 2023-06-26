@@ -94,6 +94,8 @@ export default function Cart() {
         selectedCount={selectedCount}
         selectedTotalPrice={selectedTotalPrice}
         selectedDiscountAmount={selectedDiscountAmount}
+        cartItems={cartItems}
+        selectedCartIds={selectedCartIds}
       />
     </>
   )

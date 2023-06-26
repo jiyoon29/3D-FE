@@ -1,18 +1,25 @@
 import React from 'react'
 import Image from 'next/image'
-import { formatPrice } from '@/utils/formatPrice'
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 import Title from '../common/Title'
+import { formatPrice } from '@/utils/formatPrice'
+import { CartItemProps } from '@/api/interface/cart'
 
 interface CartInfoProps {
   selectedCount: number
   selectedTotalPrice: number
   selectedDiscountAmount: number
+  cartItems: CartItemProps['item'][]
+  selectedCartIds: string[]
 }
 
 export default function CartInfo({
   selectedCount,
   selectedTotalPrice,
   selectedDiscountAmount,
+  cartItems,
+  selectedCartIds,
 }: CartInfoProps) {
   const totalPrice = selectedTotalPrice - selectedDiscountAmount
 
