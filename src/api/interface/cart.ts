@@ -1,3 +1,5 @@
+import { ApiResponse } from '.'
+
 export interface CartItemProps {
   item: {
     cartId: number
@@ -14,3 +16,10 @@ export interface CartItemProps {
     wishListId: number | null
   }
 }
+
+export interface CartDeleteRequest {
+  userId: number
+  carts: number[]
+}
+
+export type CartDeleteResponse = ApiResponse<any>
