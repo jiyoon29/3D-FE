@@ -3,16 +3,31 @@ import Image from 'next/image'
 import { formatPrice } from '@/utils/formatPrice'
 import CustomCheckbox from '../common/CustomCheckbox'
 import { CartItemProps as CartItemPropsInterface } from '@/api/interface/cart'
+import { deleteSelectedCartItem } from '@/utils/cartUtils'
 
 interface CartItemProps {
   item: CartItemPropsInterface['item']
   onChecked: (cartId: string, isChecked: boolean) => void
   isChecked: boolean
+  cartItems: CartItemProps['item'][]
+  setCartItems: React.Dispatch<React.SetStateAction<CartItemProps['item'][]>>
+  setSelectedCartIds: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-export default function CartItem({ item, onChecked, isChecked }: CartItemProps) {
+export default function CartItem({
+  item,
+  onChecked,
+  isChecked,
+  cartItems,
+  setCartItems,
+  setSelectedCartIds,
+}: CartItemProps) {
   const handleCheckboxChange = (isChecked: boolean) => {
     onChecked(`${item.cartId}`, isChecked) // 체크박스 체크/언체크 이벤트 핸들러 호출
+  }
+
+  const handleDeleteItem = () => {
+    deleteSelectedCartItem(item.cartId, cartItems, setCartItems, setSelectedCartIds)
   }
 
   return (
@@ -64,6 +79,7 @@ export default function CartItem({ item, onChecked, isChecked }: CartItemProps) 
           width={24}
           height={24}
           className="mx-auto cursor-pointer"
+          onClick={handleDeleteItem}
         />
       </td>
     </tr>

@@ -88,6 +88,9 @@ export default function CartTable({
             item={item}
             onChecked={onChecked}
             isChecked={selectedCartIds.includes(String(item.cartId))}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            setSelectedCartIds={setSelectedCartIds}
           />
         ))}
       </tbody>
