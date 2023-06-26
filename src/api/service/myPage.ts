@@ -14,14 +14,14 @@ export const getUserInfo = async <T = UserResponseData>(id: number): Promise<T> 
 }
 
 //회원 탈퇴
-export const withdrawal = async ({ id, withdrawData }: WithdrawRequest) => {
-  const { message, deleteConfirm } = withdrawData
-  const { data } = await axiosInstance.post(`/s/user/${id}/withdraw`, {
-    message,
-    deleteConfirm,
-  })
-  return data
-}
+// export const withdrawal = async ({ id, withdrawData }: WithdrawRequest) => {
+//   const { message, deleteConfirm } = withdrawData
+//   const { data } = await axiosInstance.post(`/s/user/${id}/withdraw`, {
+//     message,
+//     deleteConfirm,
+//   })
+//   return data
+// }
 
 export const getOrderHistory = async <T = OrderHistoryResponse>(page: number): Promise<T> => {
   const res = await axiosInstance.get<T>(`/assets?page=${page}`)

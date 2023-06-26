@@ -4,6 +4,7 @@ import { Review } from '@/api/interface/review'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store/store'
 import ReviewMenu from './ReviewMenu'
+import Rating from '../common/Rating'
 
 interface Props {
   review: Review
@@ -38,7 +39,8 @@ export default function ReviewItem({
               {review.firstName}
             </span>
           </div>
-          <span>Rating : {review.rating}</span>
+
+          <Rating star={review.rating} size={13} />
           {review?.userId === userId && (
             <div className="relative flex">
               <button onClick={toggleMenu}>

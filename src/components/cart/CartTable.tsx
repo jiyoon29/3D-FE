@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CartItem from './CartItem'
 import CustomCheckbox from '../common/CustomCheckbox'
-import { cartList } from '@/api/service/cart'
 import { CartItemProps } from '@/api/interface/cart'
 
 interface CartTableProps {

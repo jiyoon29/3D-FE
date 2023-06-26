@@ -5,8 +5,6 @@ import CartHeader from '@/components/cart/CartHeader'
 import CartTable from '@/components/cart/CartTable'
 import { cartList } from '@/api/service/cart'
 import { CartItemProps } from '@/api/interface/cart'
-import { RootState } from '@/store/store'
-import { useSelector } from 'react-redux'
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState<CartItemProps['item'][]>([])
