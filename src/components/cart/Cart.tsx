@@ -8,11 +8,13 @@ import { cartDelete, cartList } from '@/api/service/cart'
 import { CartItemProps } from '@/api/interface/cart'
 import { RootState } from '@/store/store'
 import { useSelector } from 'react-redux'
+import { deleteAllCartItems, deleteSelectedCartItems } from '@/utils/cartUtils'
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState<CartItemProps['item'][]>([])
-  // const [selectedCount, setSelectedCount] = useState(0)
   const [selectedCartIds, setSelectedCartIds] = useState<string[]>([])
+  const [selectedTotalPrice, setSelectedTotalPrice] = useState<number>(0)
+  const [selectedDiscountAmount, setSelectedDiscountAmount] = useState<number>(0)
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -43,33 +45,35 @@ export default function Cart() {
   }
 
   // 모든 장바구니 아이템 삭제
-  const handleDeleteAll = async () => {
-    try {
-      // 모든 장바구니 아이템 삭제
-      await cartDelete({ userId: 1, carts: cartItems.map((item) => item.cartId) })
-      setCartItems([])
-      setSelectedCartIds([])
-    } catch (error) {
-      console.log('모든 장바구니 아이템 삭제 중 오류 발생:', error)
-    }
-  }
+  const handleDeleteAll = () => deleteAllCartItems(cartItems, setCartItems, setSelectedCartIds)
 
   // 선택된 장바구니 아이템 삭제
-  const handleDeleteSelected = async () => {
-    try {
-      // 선택된 장바구니 아이템 삭제
-      await cartDelete({ userId: 1, carts: selectedCartIds.map(Number) })
-      const updatedCartItems = cartItems.filter(
-        (item) => !selectedCartIds.includes(item.cartId.toString()),
-      )
-      setCartItems(updatedCartItems)
-      setSelectedCartIds([])
-    } catch (error) {
-      console.log('선택된 장바구니 아이템 삭제 중 오류 발생:', error)
-    }
-  }
+  const handleDeleteSelected = () =>
+    deleteSelectedCartItems(selectedCartIds, cartItems, setCartItems, setSelectedCartIds)
 
   const selectedCount = selectedCartIds.length
+
+  useEffect(() => {
+    // 체크된 결제 금액 및 할인 금액 계산
+    const calculateSelectedTotalPrice = () => {
+      let totalPrice = 0
+      let discountAmount = 0
+
+      selectedCartIds.forEach((cartId) => {
+        console.log(333, cartId)
+        const selectedItem = cartItems.find((item) => item.cartId === Number(cartId))
+        if (selectedItem) {
+          totalPrice += selectedItem.asset.price
+          discountAmount += selectedItem.asset.price - selectedItem.asset.discountPrice
+        }
+      })
+
+      setSelectedTotalPrice(totalPrice)
+      setSelectedDiscountAmount(discountAmount)
+    }
+
+    calculateSelectedTotalPrice()
+  }, [selectedCartIds, cartItems])
 
   return (
     <>
@@ -88,7 +92,11 @@ export default function Cart() {
           setSelectedCartIds={setSelectedCartIds}
         />
       </div>
-      <CartInfo selectedCount={selectedCount} />
+      <CartInfo
+        selectedCount={selectedCount}
+        selectedTotalPrice={selectedTotalPrice}
+        selectedDiscountAmount={selectedDiscountAmount}
+      />
     </>
   )
 }
