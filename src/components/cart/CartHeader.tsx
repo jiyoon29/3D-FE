@@ -4,9 +4,16 @@ import Title from '@/components/common/Title'
 interface CartHeaderProps {
   itemCount: number
   selectedCount: number
+  onDeleteAll: () => void
+  onDeleteSelected: () => void
 }
 
-export default function CartHeader({ itemCount, selectedCount }: CartHeaderProps) {
+export default function CartHeader({
+  itemCount,
+  selectedCount,
+  onDeleteAll,
+  onDeleteSelected,
+}: CartHeaderProps) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-baseline">
@@ -16,10 +23,16 @@ export default function CartHeader({ itemCount, selectedCount }: CartHeaderProps
         </p>
       </div>
       <div className="flex">
-        <button className="h-[2.8rem] w-[12rem] rounded-sm border border-transparent-navy-30 text-sm">
+        <button
+          className="h-[2.8rem] w-[12rem] rounded-sm border border-transparent-navy-30 text-sm"
+          onClick={onDeleteAll}
+        >
           전체 삭제
         </button>
-        <button className="ml-[1.6rem] h-[2.8rem] w-[12rem] rounded-sm border border-transparent-navy-30 text-sm">
+        <button
+          className="ml-[1.6rem] h-[2.8rem] w-[12rem] rounded-sm border border-transparent-navy-30 text-sm"
+          onClick={onDeleteSelected}
+        >
           선택 항목 삭제
         </button>
       </div>
