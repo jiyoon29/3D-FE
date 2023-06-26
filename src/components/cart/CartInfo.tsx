@@ -3,14 +3,18 @@ import Image from 'next/image'
 import { formatPrice } from '@/utils/formatPrice'
 import Title from '../common/Title'
 
-export default function CartInfo() {
+interface CartInfoProps {
+  selectedCount: number
+}
+
+export default function CartInfo({ selectedCount }: CartInfoProps) {
   return (
     <div className="sticky mr-[2.4rem] flex w-[23.9%] min-w-[26rem] flex-col justify-between border-l border-transparent-navy-30 px-[1.432%] py-[1.671%]">
       <div>
         <Title tit="결제정보" mb={2.4} />
         <ul className="text-ms">
           <li className="flex w-full justify-between border-b border-dashed border-transparent-navy-30 px-[0.4rem] leading-[5.6rem]">
-            <p>구매할 에셋 : 4개</p>
+            <p>구매할 에셋 : {selectedCount}개</p>
             <p>{formatPrice(-25000)}</p>
           </li>
           <li className="border-b border-dashed border-transparent-navy-30 text-neutral-navy-300">
@@ -44,7 +48,7 @@ export default function CartInfo() {
           </li>
           <li className="flex w-full justify-between border-b border-transparent-navy-30 px-[0.4rem] leading-[5.6rem]">
             <p>총 추가 혜택</p>
-            <p>{formatPrice(-25000)}</p>
+            <p>{formatPrice(0)}</p>
           </li>
         </ul>
       </div>
