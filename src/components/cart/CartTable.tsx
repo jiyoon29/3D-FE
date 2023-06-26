@@ -94,17 +94,3 @@ export default function CartTable({
     </table>
   )
 }
-// const [cartItems, setCartItems] = useState<CartItemProps['item'][]>([])
-
-// useEffect(() => {
-//   const fetchCartItems = async () => {
-//     try {
-//       const response = await cartList(1)
-//       setCartItems(response.data)
-//       console.log(response.data)
-//     } catch (error) {
-//       console.log('Error fetching cart items:', error)
-//     }
-//   }
-//   fetchCartItems()
-// }, [])
