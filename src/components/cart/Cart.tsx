@@ -37,7 +37,6 @@ export default function Cart() {
     if (isChecked) {
       // 선택된 카트 ID 목록에 추가
       setSelectedCartIds((prevIds) => [...prevIds, cartId])
-      console.log(selectedCartIds)
     } else {
       // 선택된 카트 ID 목록에서 제거
       setSelectedCartIds((prevIds) => prevIds.filter((id) => id !== cartId))
@@ -60,7 +59,6 @@ export default function Cart() {
       let discountAmount = 0
 
       selectedCartIds.forEach((cartId) => {
-        console.log(333, cartId)
         const selectedItem = cartItems.find((item) => item.cartId === Number(cartId))
         if (selectedItem) {
           totalPrice += selectedItem.asset.price
