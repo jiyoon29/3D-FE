@@ -5,17 +5,21 @@ import { removeCookie, setToken } from '@/utils/token'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
+import { useUser } from '@/hooks/useUser'
 
 export default function Logout({
   setAccessToken,
 }: {
   setAccessToken: Dispatch<SetStateAction<boolean>>
 }) {
+  const { resetUserId } = useUser()
   const { mutate } = useMutation(logout, {
     onSuccess: () => {
+      resetUserId()
       console.log(logout, '로그아웃 성공')
       removeCookie('accessToken')
       setAccessToken(false)
+      localStorage.removeItem('userId')
     },
   })
   const queryClient = useQueryClient()

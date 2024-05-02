@@ -1,13 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
 import { formatPrice } from '@/utils/formatPrice'
+import { CartItemProps } from '@/api/interface/cart'
 
-export default function PaymentItem() {
+interface PaymentItemProps {
+  item: CartItemProps['item']
+}
+
+export default function PaymentItem({ item }: PaymentItemProps) {
   return (
     <li className="flex items-center px-[0.4rem] py-[0.65rem]">
       <div>
         <Image
-          src="/image.svg"
+          src={`https://asset-store-bucket.s3.ap-northeast-2.amazonaws.com/asset-store-bucket/${item.asset.thumbnailUrl}`}
           alt="asset"
           width={68}
           height={85}
@@ -15,10 +20,15 @@ export default function PaymentItem() {
         />
       </div>
       <div>
-        <h4 className="mb-[0.8rem] leading-[2.2rem]">Fast running</h4>
+        <h4 className="mb-[0.8rem] leading-[2.2rem]">{item.asset.assetName}</h4>
         <div className="flex items-center text-base leading-[2rem]">
-          <p className="mr-[0.4rem] text-primary-main">{formatPrice(18500)}</p>
-          <span className="text-ms text-neutral-navy-800 line-through">{formatPrice(22000)}</span>
+          <p className="mr-[0.4rem] text-primary-main">{formatPrice(item.asset.discountPrice)}</p>
+
+          {item.asset.discountPrice !== item.asset.price && (
+            <span className="text-ms text-neutral-navy-800 line-through">
+              {formatPrice(item.asset.price)}
+            </span>
+          )}
         </div>
       </div>
     </li>

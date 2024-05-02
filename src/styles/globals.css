@@ -3,21 +3,19 @@
 @tailwind utilities;
 
 @layer utilities {
-  @variants responsive {
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
-    }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
-  .space-y-3 > :not([hidden]) ~ :not([hidden]) {
-    margin-top: 0;
-  }
+}
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0;
 }
 
 html {
@@ -30,7 +28,7 @@ body {
   overflow-y: auto;
   font-size: 1.6rem;
 
-  /* .react-datepicker-popper {
+  .react-datepicker-popper {
     font-size: medium;
     min-width: 17%;
     color: #5b5b5b;
@@ -54,15 +52,22 @@ body {
       cursor: default;
       visibility: hidden;
     }
-  } */
+  }
 }
 
 * {
   box-sizing: border-box;
 }
+li {
+  list-style: none;
+}
 
 input {
   outline: none;
+}
+
+.bg-checkbox-off {
+  background-image: url(/icons/checkboxOff.svg);
 }
 
 input[type='checkbox']:checked + label .bg-checkbox-off {

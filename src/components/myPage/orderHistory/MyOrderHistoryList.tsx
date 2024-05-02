@@ -2,23 +2,27 @@
  * 마이페이지-주문내역
  */
 
-import { useState } from 'react'
 import MyOrderHistoryItem from './MyOrderHistoryItem'
-import { Asset } from '@/api/interface/asset'
+import { OrderHistory, OrderHistoryDetailResponse } from '@/api/interface/payment'
 
-interface Props {
-  assets: Asset[]
+interface OrderHistoryProps {
+  orderHistories: OrderHistory[] | undefined
+  detailInfo: OrderHistoryDetailResponse | undefined
 }
 
-// export default function MyOrderHistoryList({ assets }: Props) {
-export default function MyOrderHistoryList() {
+export default function MyOrderHistoryList({ orderHistories, detailInfo }: OrderHistoryProps) {
+  if (!orderHistories) return null
+
   return (
     <>
       <ul className="flex flex-col">
-        <MyOrderHistoryItem />
-        {/* {assets.map((asset) => (
-        <MyOrderHistoryItem key={asset.id} asset={asset} />
-      ))} */}
+        {orderHistories.map((orderHistory) => (
+          <MyOrderHistoryItem
+            key={orderHistory.orderId}
+            orderHistory={orderHistory}
+            detailInfo={detailInfo}
+          />
+        ))}
       </ul>
     </>
   )

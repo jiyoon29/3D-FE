@@ -7,7 +7,6 @@ interface Props {
 }
 
 export default function AssetDetailNav({ setSelectedTab, selectedTab }: Props) {
-  console.log({ selectedTab })
   const dispatch = useDispatch()
 
   const handleCloseDrawer = () => {

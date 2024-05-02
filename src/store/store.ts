@@ -1,17 +1,23 @@
-'use client'
-
 import { configureStore } from '@reduxjs/toolkit'
 import drawerReducer from './drawerSlice'
 import clickedAssetReducer from './clickedAssetSlice'
-import categoryReducer from './setSelectedCategory'
+import clickedReviewReducer from './clickedReviewSlice'
+import categoryReducer from './categorySlice'
 import tagReducer from './tagSlice'
+import cartReducer from './cartSlice'
+import userReducer from './userSlice'
+import clickedOrderHistoryReducer from './clickedOrderHistorySlice'
 
 export const store = configureStore({
   reducer: {
     drawer: drawerReducer,
     clickedAsset: clickedAssetReducer,
+    clickedReview: clickedReviewReducer,
     category: categoryReducer,
     tag: tagReducer,
+    cart: cartReducer,
+    user: userReducer,
+    clickedOrderHistory: clickedOrderHistoryReducer,
   },
 })
 

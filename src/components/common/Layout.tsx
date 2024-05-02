@@ -1,11 +1,10 @@
 import React, { ReactNode } from 'react'
-import SideNav from './SideNav'
-import Header from './Header'
+import Header from './header/Header'
+import SideNav from './SideNav/SideNav'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen">
-      {/* @ts-expect-error Async Server Component */}
       <SideNav />
       <div className="ml-[24.4rem] h-full w-full">
         <Header />

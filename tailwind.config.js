@@ -1,6 +1,6 @@
 module.exports = {
+  plugins: [],
   tailwindConfig: './styles/tailwind.config.js',
-
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,38 +14,32 @@ module.exports = {
       sm: [
         '1.2rem',
         {
-          fontWeight: '400'
+          fontWeight: '400',
         },
       ],
       ms: '1.4rem',
-      mm: [
-        '1.4rem',
-        { fontWeight: '500' }
-      ],
+      mm: ['1.4rem', { fontWeight: '500' }],
       base: [
         '1.6rem',
         {
-          fontWeight: '500'
+          fontWeight: '500',
         },
       ],
-      sl: [
-        '1.8rem',
-        { fontWeight: '500' }
-      ],
+      sl: ['1.8rem', { fontWeight: '500' }],
       lg: '2.4rem',
       xl: '3.2rem',
     },
     borderRadius: {
       sm: '0.4rem',
       lg: '0.8rem',
-      full: '999.9rem'
+      full: '999.9rem',
     },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'checkbox-off': 'url(/icons/checkboxOFF.svg)',
-        'radio-off': 'url(/icons/radioOff.svg)'
+        'radio-off': 'url(/icons/radioOff.svg)',
       },
       colors: {
         primary: {
@@ -59,8 +53,8 @@ module.exports = {
           red: '#933224',
           yellow: '#EAB737',
           green: '#11B0A8',
-          'green-hover': '#FF6651',
-          'red-text': '#07AAA2',
+          'red-text': '#FF6651',
+          'green-hover': '#07AAA2',
         },
         bg: {
           0: '#1A1C1F',
@@ -68,7 +62,7 @@ module.exports = {
           2: '#23262D',
           3: '#363B43',
           4: '#151719',
-          'transparent': 'transparent',
+          transparent: 'transparent',
         },
         neutral: {
           'white-0': '#FFF',
@@ -89,7 +83,7 @@ module.exports = {
           heart: 'rgba(166, 197, 226, 0.1)',
           'navy-15': 'rgba(250, 251, 252, 0.15)',
           'navy-30': 'rgba(159, 173, 188, 0.3)',
-          'heart': 'rgba(166, 197, 226, 0.1)',
+          heart: 'rgba(166, 197, 226, 0.1)',
           'navy-second': '#9FADBC',
           blue: '#60AFFF',
           darkblue: '#237FDB',
@@ -97,5 +91,4 @@ module.exports = {
       },
     },
   },
-  plugins: [],
 };

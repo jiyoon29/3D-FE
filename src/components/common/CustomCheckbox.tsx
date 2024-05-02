@@ -1,10 +1,13 @@
-import React from 'react'
+'use client'
+import React, { useState, useEffect } from 'react'
 
 type CustomCheckboxProps = {
   id: string
   className?: string
   size?: number
+  onChange?: (isChecked: boolean) => void
   children?: React.ReactNode
+  isChecked?: boolean
 }
 
 const sizes: Record<number, string> = {
@@ -17,11 +20,38 @@ const sizes: Record<number, string> = {
   32: 'w-[3.2rem] h-[3.2rem]',
 }
 
-function CustomCheckbox({ id, className, size = 32, children }: CustomCheckboxProps) {
+function CustomCheckbox({
+  id,
+  className,
+  size = 32,
+  onChange,
+  children,
+  isChecked = false,
+}: CustomCheckboxProps) {
   const sizeClass = sizes[size] || ''
+  const [isCheckedInternal, setIsCheckedInternal] = useState(isChecked) // isCheckedInternal 상태 추가
+
+  useEffect(() => {
+    setIsCheckedInternal(isChecked) // isChecked prop이 변경되면 isCheckedInternal 상태 업데이트
+  }, [isChecked])
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { checked } = event.target
+    setIsCheckedInternal(checked) // isCheckedInternal 상태 변경
+    if (onChange) {
+      onChange(checked)
+    }
+  }
+
   return (
     <>
-      <input type="checkbox" id={id} className="hidden" />
+      <input
+        type="checkbox"
+        id={id}
+        className="hidden"
+        checked={isCheckedInternal}
+        onChange={handleCheckboxChange}
+      />
       <label htmlFor={id} className={`flex items-center ${className}`}>
         <div className={`mx-auto ${sizeClass} bg-checkbox-off bg-cover`}></div>
         {children}

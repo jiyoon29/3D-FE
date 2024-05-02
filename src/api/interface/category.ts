@@ -1,15 +1,20 @@
 /**
  * 카테고리 Interface
  */
+
+import { ApiResponse } from '.'
+
 export interface Category {
-  name: string
-  subcategories: Subcategory[]
-  totalCount: number
-  tags?: []
+  categoryName: string
+  categoryCount: number
+  tagList: string[]
+  subCategoryList: SubCategory[]
 }
 
-export interface Subcategory {
-  name: string
-  count: number
-  tags?: []
+export interface SubCategory {
+  subCategoryName: string
+  subCategoryCount: number
+  tagList: string[]
 }
+
+export type CategoryResponse = ApiResponse<{ categoryList: Category[] }>

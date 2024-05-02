@@ -24,7 +24,6 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, isAgreed, onClose, setI
   }
 
   const handleChangeTermsModal = () => {
-    console.log({ isAgreed })
     setIsAgreed((isAgreed) => !isAgreed)
   }
 
@@ -37,7 +36,7 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, isAgreed, onClose, setI
     >
       <div
         ref={modalRef}
-        className="rounded-lg m-[4.3rem] h-[58%] w-3/6 justify-center bg-black bg-opacity-80"
+        className="m-[4.3rem] h-[58%] w-3/6 justify-center rounded-sm bg-black bg-opacity-80"
       >
         <h2 className="mx-10 my-10 mb-4 text-[2.2rem] font-semibold text-neutral-navy-300">
           이용약관
@@ -77,7 +76,7 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, isAgreed, onClose, setI
           </p>
         </div>
         {/* 이용약관 동의 체크박스 */}
-        <form className="flex flex-col justify-center ">
+        <div className="flex flex-col justify-center ">
           <div className="flex justify-center">
             <input
               id="termsAgreed"
@@ -98,20 +97,20 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, isAgreed, onClose, setI
               <button
                 type="reset"
                 onClick={handleCloseTermsModal}
-                className="rounded-full mx-2 h-[3.1rem] w-full bg-none px-5 py-3 text-center text-sm text-neutral-white-50 dark:border dark:border-primary-darkblue-hover"
+                className="mx-2 h-[3.1rem] w-full rounded-full bg-none px-5 py-3 text-center text-sm text-neutral-white-50 dark:border dark:border-primary-darkblue-hover"
               >
                 Close
               </button>
               <button
                 onClick={onClose}
                 disabled={!isAgreed}
-                className="rounded-full dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mx-2 h-[3.1rem] w-full bg-primary-darkblue-hover px-5 py-3 text-center text-sm text-neutral-white-50 focus:outline-none"
+                className="dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mx-2 h-[3.1rem] w-full rounded-full bg-primary-darkblue-hover px-5 py-3 text-center text-sm text-neutral-white-50 focus:outline-none"
               >
                 Accept
               </button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   )

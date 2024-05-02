@@ -27,11 +27,11 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({ isOpen, onClose
       {/* 모달 */}
       <div
         ref={modalRef}
-        className="m-[4.3rem] h-[25%] w-[28%] justify-center rounded-xl bg-black px-12"
+        className="rounded-xl m-[4.3rem] h-[25%] w-[28%] justify-center bg-black px-12"
       >
         <form className="h-full w-full" action="">
           <div className="my-4 flex h-[30%] flex-col justify-center">
-            <h4 className="mb-[6px] flex justify-center text-[20px] text-neutral-navy-100 dark:text-neutral-navy-100">
+            <h4 className="mb-[6px] flex justify-center text-[1.2rem] text-neutral-navy-100 dark:text-neutral-navy-100">
               회원 탈퇴가 완료되었습니다.
             </h4>
           </div>
@@ -43,7 +43,7 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({ isOpen, onClose
                 <button
                   type="submit"
                   onClick={onClose}
-                  className="dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mx-2 h-[3.1rem] w-full rounded-full bg-primary-darkblue-hover px-5 py-3 text-center text-sm text-neutral-white-50 focus:outline-none"
+                  className="dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 rounded-full mx-2 h-[3.1rem] w-full bg-primary-darkblue-hover px-5 py-3 text-center text-sm text-neutral-white-50 focus:outline-none"
                 >
                   닫기
                 </button>
